@@ -6,16 +6,11 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const data = require('./data-file.json');
 
-const ejsList = [];
-data.indexList.forEach((e) => {
-  ejsList.push(
-    new HtmlWebpackPlugin({
-      template: `./src/ejs/${e.fileName}.ejs`,
-      filename: `${e.fileName}.html`,
-      minify: false,
-    }),
-  );
-});
+const HtmlWebpackPlugins = data.indexList.map((e) => new HtmlWebpackPlugin({
+  template: `./src/ejs/${e.fileName}.ejs`,
+  filename: `${e.fileName}.html`,
+  minify: false,
+}));
 
 module.exports = {
   entry: ['./src/js/index.js'],
@@ -78,7 +73,7 @@ module.exports = {
     ],
   },
   plugins: [
-    ...ejsList,
+    ...HtmlWebpackPlugins,
     new MiniCssExtractPlugin({
       filename: 'lib/built/built.css',
     }),

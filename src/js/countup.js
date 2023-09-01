@@ -4,17 +4,14 @@ import { isElementInViewport } from './utilities';
 
 const initCountUp = () => {
   const countUpFn = (trigger, stati) => {
-    const statiEl = document.querySelectorAll(stati);
     const numAnim = [];
-    for (let i = 0; i < statiEl.length; i += 1) {
-      const e = statiEl[i];
-      const num = parseInt(e.getAttribute('data-num'), 10);
+    document.querySelectorAll(stati).forEach((e) => {
       numAnim.push(
-        new CountUp(e, num, {
+        new CountUp(e, parseInt(e.getAttribute('data-num'), 10), {
           duration: 3,
         }),
       );
-    }
+    });
     const statiTiggerEl = document.querySelector(trigger);
     if (statiTiggerEl) {
       isElementInViewport(
@@ -33,7 +30,9 @@ const initCountUp = () => {
       );
     }
   };
-  countUpFn('#countUpTrigger-0', '.countUpTrigger-0-item');
+  if (document.querySelector('#countUpTrigger-0')) {
+    countUpFn('#countUpTrigger-0', '.countUpTrigger-0-item');
+  }
 };
 
 export default initCountUp;

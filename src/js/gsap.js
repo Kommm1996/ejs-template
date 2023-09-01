@@ -21,6 +21,7 @@ const initGSAP = () => {
       duration: 1,
     });
   });
+
   const scrollTo = (top) => {
     gsap.to('html', {
       scrollTo: top || 0,
