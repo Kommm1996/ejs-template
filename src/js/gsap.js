@@ -23,7 +23,7 @@ const initGSAP = () => {
   });
 
   const scrollTo = (top) => {
-    gsap.to('html', {
+    gsap.to('html,body', {
       scrollTo: top || 0,
       duration: 1,
       ease: 'power3.out',
