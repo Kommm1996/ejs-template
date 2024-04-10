@@ -2,9 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: 210 40% 98%;
+  --primary: 199 89% 48%;
+  --primary-text: 0 0% 4%;
+  --border: 0 0% 90%;
+}
+
+html.dark {
+  --background: 222 47% 11%;
+  --primary: 201 96% 32%;
+  --primary-text: 0 0% 98%;
+  --border: 215 16% 47%;
+}
+
 @layer base {
   body {
-    @apply text-xs md:text-sm xl:text-base;
+    @apply bg-background text-primary-text transition-colors;
   }
 
   .bi {

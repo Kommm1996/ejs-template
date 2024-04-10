@@ -1,5 +1,5 @@
 <%- include('./html-start.ejs',{title:title}) %>
-<header>
+<header class="relative">
   <div class="border-b py-5 text-center">
     <div class="text-2xl">
       <h1>Header</h1>
@@ -14,5 +14,11 @@
       <i class="bi bi-file-earmark"></i>
       <span>header.ejs</span>
     </div>
+  </div>
+  <div class="absolute right-5 top-1/2 -translate-y-1/2 md:right-10">
+    <button class="text-xl md:text-2xl" @click="toggleDarkMode(!isDark)">
+      <i class="bi bi-brightness-high-fill" v-if="!isDark"></i>
+      <i class="bi bi-moon-stars-fill" v-if="isDark"></i>
+    </button>
   </div>
 </header>

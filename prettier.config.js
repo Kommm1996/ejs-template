@@ -1,5 +1,3 @@
-const prettierPluginTailwindcss = require('prettier-plugin-tailwindcss');
-
 module.exports = {
-  plugins: [prettierPluginTailwindcss],
+  plugins: ['prettier-plugin-ejs', 'prettier-plugin-tailwindcss'],
 };

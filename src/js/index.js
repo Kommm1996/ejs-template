@@ -2,9 +2,6 @@
 import { createApp } from 'petite-vue';
 // smoothscroll
 import SmoothScroll from 'smoothscroll-for-websites';
-// fancyapps
-import '@fancyapps/ui/dist/fancybox.esm';
-import '@fancyapps/ui/dist/fancybox.css';
 // bootstrap icons
 import 'bootstrap-icons/font/bootstrap-icons.css';
 // countUp
@@ -18,10 +15,34 @@ import '../css/input.css';
 
 createApp({
   // data
+  isDark: false,
   toPosi: Function,
   // methods
+  isDarkMode() {
+    if (
+      localStorage.theme === 'dark'
+      || (!('theme' in localStorage)
+        && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+      this.isDark = true;
+    } else {
+      document.documentElement.classList.remove('dark');
+      this.isDark = false;
+    }
+  },
+  toggleDarkMode(toggle) {
+    if (toggle) {
+      localStorage.theme = 'dark';
+    } else {
+      localStorage.theme = 'light';
+    }
+    this.isDarkMode();
+  },
   // mounted
   mounted() {
+    // isDarkMode
+    this.isDarkMode();
     // initCountUp
     initCountUp();
     // initSwiper
@@ -31,16 +52,5 @@ createApp({
     this.toPosi = gsapObj.scrollTo;
     // SmoothScroll
     SmoothScroll({ animationTime: 800 });
-    // scroll
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          // do something...
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
   },
 }).mount('#app');
