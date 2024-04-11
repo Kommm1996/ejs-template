@@ -2,9 +2,9 @@
 <main>
   <section class="my-10 md:my-16 xl:my-20">
     <div class="container mx-auto px-5">
-      <div class="grid grid-cols-2 gap-5 md:grid-cols-4 xl:grid-cols-6">
-        <% for( let i = 1; i <= 30; i++ ) { %>
-        <div class="scrollFadeZoomIn">
+      <div class="grid grid-cols-2 gap-5 xl:grid-cols-4">
+        <% for( let i = 1; i <= 8; i++ ) { %>
+        <div class="fadeZoomIn">
           <figure class="aspect-square overflow-hidden rounded bg-slate-400">
             <img
               src="/public/img.jpg"
@@ -12,6 +12,46 @@
               class="h-full w-full object-cover"
             />
           </figure>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-10 md:my-16 xl:my-20">
+    <div class="container mx-auto px-5">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <% for( let i = 1; i <= 8; i++ ) { %>
+          <div class="swiper-slide">
+            <figure class="aspect-square overflow-hidden rounded bg-slate-400">
+              <img
+                src="/public/img.jpg"
+                alt=""
+                class="h-full w-full object-cover"
+              />
+            </figure>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-10 md:my-16 xl:my-20">
+    <div class="container mx-auto px-5">
+      <div
+        id="countUpTrigger-0"
+        class="grid grid-cols-2 gap-5 text-center font-medium xl:grid-cols-4"
+      >
+        <% for( let i = 1; i <= 4; i++ ) { %>
+        <div>
+          <h3
+            class="countUpTrigger-0-item text-2xl xl:text-4xl"
+            data-num="<%= Math.floor(Math.random() * 1000) %>"
+          >
+            0
+          </h3>
         </div>
         <% } %>
       </div>

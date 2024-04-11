@@ -8,13 +8,13 @@ const initSwiper = () => {
       new Swiper('.swiper', {
         speed: 600,
         loop: true,
-        slidesPerView: 1,
-        spaceBetween: 10,
+        slidesPerView: 1.2,
+        spaceBetween: 20,
         parallax: true,
         observer: true,
         observeParents: true,
         autoplay: {
-          delay: 5000,
+          delay: 3000,
           stopOnLastSlide: false,
           disableOnInteraction: false,
         },
@@ -27,7 +27,14 @@ const initSwiper = () => {
           clickable: true,
         },
         breakpoints: {
+          768: {
+            slidesPerView: 2.5,
+          },
+          1024: {
+            slidesPerView: 3.2,
+          },
           1280: {
+            slidesPerView: 4,
             speed: 1000,
           },
         },

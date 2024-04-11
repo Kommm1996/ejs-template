@@ -8,17 +8,20 @@ const initGSAP = () => {
   // });
 
   // scroll fade
-  gsap.utils.toArray('.scrollFadeZoomIn').forEach((e) => {
+  gsap.utils.toArray('.fadeZoomIn').forEach((e) => {
     gsap.from(e, {
       scrollTrigger: {
         trigger: e,
         start: 'top bottom',
-        end: 'top 80%',
-        scrub: 1,
+        end: 'top top',
+        toggleActions: 'play none none reset',
+        // scrub: 1,
+        // markers: 1,
       },
-      scale: 0,
+      scale: 0.8,
       autoAlpha: 0,
-      duration: 1,
+      duration: 0.6,
+      delay: e.dataset.delay || 0.2,
     });
   });
 
