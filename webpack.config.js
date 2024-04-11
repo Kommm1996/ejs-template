@@ -15,9 +15,9 @@ const HtmlWebpackPlugins = data.indexList.map((e) => new HtmlWebpackPlugin({
 module.exports = {
   entry: ['./src/js/index.js'],
   output: {
-    publicPath: '/',
+    // publicPath: './',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'lib/built/built.js',
+    filename: './lib/built/built.js',
   },
   module: {
     rules: [
@@ -53,21 +53,21 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif|webp|ico)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'lib/img/[name][ext]',
+          filename: './lib/img/[name][ext]',
         },
       },
       {
         test: /\.mp4$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'lib/video/[name][ext]',
+          filename: './lib/video/[name][ext]',
         },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'lib/font/[hash][ext]',
+          filename: './lib/font/[hash][ext]',
         },
       },
     ],
@@ -75,7 +75,7 @@ module.exports = {
   plugins: [
     ...HtmlWebpackPlugins,
     new MiniCssExtractPlugin({
-      filename: 'lib/built/built.css',
+      filename: './lib/built/built.css',
     }),
     new ESLintPlugin(),
     new CleanWebpackPlugin(),
