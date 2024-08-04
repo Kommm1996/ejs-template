@@ -1,23 +1,28 @@
+const fs = require('fs');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { EsbuildPlugin } = require('esbuild-loader');
-const ESLintPlugin = require('eslint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const data = require('./data-file.json');
 
-const HtmlWebpackPlugins = data.indexList.map((e) => new HtmlWebpackPlugin({
-  template: `./src/ejs/${e.fileName}.ejs`,
-  filename: `${e.fileName}.html`,
-  minify: false,
-}));
+const ejsDirectory = path.resolve(__dirname, 'src', 'ejs');
+const ejsFiles = fs.readdirSync(ejsDirectory);
+const HtmlWebpackPlugins = ejsFiles
+  .filter((file) => path.extname(file) === '.ejs')
+  .map((file) => path.basename(file, '.ejs'))
+  .map((e) => new HtmlWebpackPlugin({
+    template: path.resolve(ejsDirectory, `${e}.ejs`),
+    filename: `${e}.html`,
+    minify: false,
+  }));
 
 module.exports = {
   entry: ['./src/js/index.js'],
   output: {
-    // publicPath: './',
+    publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
-    filename: './lib/built/built.js',
+    filename: 'assets/js/built.js',
   },
   module: {
     rules: [
@@ -45,29 +50,26 @@ module.exports = {
       {
         test: /\.[jt]sx?$/,
         loader: 'esbuild-loader',
-        options: {
-          target: 'es2015',
-        },
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|webp|ico)$/i,
         type: 'asset/resource',
         generator: {
-          filename: './lib/img/[name][ext]',
+          filename: 'assets/img/[name][ext]',
         },
       },
       {
         test: /\.mp4$/i,
         type: 'asset/resource',
         generator: {
-          filename: './lib/video/[name][ext]',
+          filename: 'assets/video/[name][ext]',
         },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
-          filename: './lib/font/[hash][ext]',
+          filename: 'assets/font/[hash][ext]',
         },
       },
     ],
@@ -75,15 +77,13 @@ module.exports = {
   plugins: [
     ...HtmlWebpackPlugins,
     new MiniCssExtractPlugin({
-      filename: './lib/built/built.css',
+      filename: 'assets/css/built.css',
     }),
-    new ESLintPlugin(),
     new CleanWebpackPlugin(),
   ],
   optimization: {
     minimizer: [
       new EsbuildPlugin({
-        target: 'es2015',
         css: true,
       }),
     ],
