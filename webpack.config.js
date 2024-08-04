@@ -20,9 +20,9 @@ const HtmlWebpackPlugins = ejsFiles
 module.exports = {
   entry: ['./src/js/index.js'],
   output: {
-    publicPath: '/',
+    // publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'assets/js/built.js',
+    filename: './assets/js/built.js',
   },
   module: {
     rules: [
@@ -55,21 +55,21 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif|webp|ico)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/img/[name][ext]',
+          filename: './assets/img/[name][ext]',
         },
       },
       {
         test: /\.mp4$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/video/[name][ext]',
+          filename: './assets/video/[name][ext]',
         },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/font/[hash][ext]',
+          filename: './assets/font/[hash][ext]',
         },
       },
     ],
@@ -77,7 +77,7 @@ module.exports = {
   plugins: [
     ...HtmlWebpackPlugins,
     new MiniCssExtractPlugin({
-      filename: 'assets/css/built.css',
+      filename: './assets/css/built.css',
     }),
     new CleanWebpackPlugin(),
   ],
