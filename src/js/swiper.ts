@@ -1,11 +1,11 @@
-import Swiper from 'swiper/swiper-bundle.esm.js';
-import 'swiper/swiper-bundle.min.css';
+import Swiper from "swiper";
+import "swiper/swiper-bundle.min.css";
 
-const initSwiper = () => {
+export const initSwiper = () => {
   const swipers = [];
-  if (document.querySelector('.swiper')) {
+  if (document.querySelector(".swiper")) {
     swipers.push(
-      new Swiper('.swiper', {
+      new Swiper(".swiper", {
         speed: 600,
         loop: true,
         slidesPerView: 1.2,
@@ -19,11 +19,11 @@ const initSwiper = () => {
           disableOnInteraction: false,
         },
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
         },
         pagination: {
-          el: '.swiper-pagination',
+          el: ".swiper-pagination",
           clickable: true,
         },
         breakpoints: {
@@ -42,5 +42,3 @@ const initSwiper = () => {
     );
   }
 };
-
-export default initSwiper;

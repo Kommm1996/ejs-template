@@ -18,11 +18,14 @@ const HtmlWebpackPlugins = ejsFiles
   }));
 
 module.exports = {
-  entry: ['./src/js/index.js'],
+  entry: ['./src/js/index.ts'],
   output: {
     // publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
     filename: './assets/js/built.js',
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   module: {
     rules: [
