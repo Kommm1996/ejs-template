@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A modern EJS template with Tailwind CSS, GSAP, Swiper, and TypeScript." />
+    <meta name="theme-color" content="#eef1f7" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
     <title><%= title %></title>
   </head>
 
   <body>
     <!-- base container start -->
-    <div id="app" class="base-container" @vue:mounted="mounted">
+    <div id="app" class="flex min-h-screen flex-col" @vue:mounted="mounted">

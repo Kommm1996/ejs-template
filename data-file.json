@@ -1,3 +1,21 @@
 {
-  "indexTitle": "Title - Index"
+  "siteTitle": "ejs-template",
+  "indexTitle": "ejs-template — Modern HTML Prototyping",
+  "navLinks": [
+    { "label": "Features", "href": "#features" },
+    { "label": "Gallery", "href": "#gallery" },
+    { "label": "Stats", "href": "#stats" }
+  ],
+  "features": [
+    { "icon": "bi-code-slash", "title": "EJS Templating", "desc": "Modular HTML with layouts, includes, and data injection powered by EJS." },
+    { "icon": "bi-bricks", "title": "Tailwind CSS 3", "desc": "Utility-first styling with dark mode, custom themes, and responsive helpers." },
+    { "icon": "bi-play-btn", "title": "GSAP Animations", "desc": "Scroll-triggered animations, fade-ins, and smooth scrolling out of the box." },
+    { "icon": "bi-grid-3x3-gap", "title": "Swiper + CountUp", "desc": "Touch carousels and animated counters with zero config needed." }
+  ],
+  "stats": [
+    { "num": 12, "suffix": "+", "label": "Pages Created" },
+    { "num": 99, "suffix": "%", "label": "Build Success" },
+    { "num": 0, "suffix": "ms", "label": "Dev Server Start" },
+    { "num": 24, "suffix": "/7", "label": "Dark Mode" }
+  ]
 }

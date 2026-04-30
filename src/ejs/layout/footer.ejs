@@ -1,18 +1,53 @@
 <!-- footer start -->
-<footer>
-  <div class="border-t py-5 text-center">
-    <div class="text-2xl">
-      <h1>Footer</h1>
+<footer class="border-t border-border bg-surface">
+  <div class="container-page py-12 md:py-16">
+    <div class="grid gap-10 md:grid-cols-3">
+      <!-- Brand -->
+      <div class="md:col-span-1">
+        <a href="/" class="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight">
+          <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground">E</span>
+          ejs-template
+        </a>
+        <p class="mt-4 text-sm leading-relaxed text-muted-foreground max-w-xs">
+          A modern template for compiling HTML using EJS — with Tailwind CSS, GSAP, Swiper, and TypeScript.
+        </p>
+        <div class="mt-6 flex gap-3">
+          <a href="https://github.com/Kommm1996/ejs-template" target="_blank" rel="noopener noreferrer" class="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://github.com/Kommm1996/ejs-template/issues" target="_blank" rel="noopener noreferrer" class="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
+            <i class="bi bi-chat-dots"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Nav Links -->
+      <div>
+        <h4 class="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Navigation</h4>
+        <ul class="space-y-3">
+          <% navLinks.forEach(function(link) { %>
+          <li>
+            <a href="<%= link.href %>" class="text-sm text-foreground/70 transition-colors hover:text-foreground"><%= link.label %></a>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div>
+        <h4 class="mb-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Resources</h4>
+        <ul class="space-y-3">
+          <li><a href="https://ejs.co/" target="_blank" rel="noopener noreferrer" class="text-sm text-foreground/70 transition-colors hover:text-foreground">EJS Docs</a></li>
+          <li><a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-foreground/70 transition-colors hover:text-foreground">Tailwind CSS</a></li>
+          <li><a href="https://webpack.js.org/" target="_blank" rel="noopener noreferrer" class="text-sm text-foreground/70 transition-colors hover:text-foreground">Webpack</a></li>
+          <li><a href="https://gsap.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-foreground/70 transition-colors hover:text-foreground">GSAP</a></li>
+          <li><a href="https://swiperjs.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-foreground/70 transition-colors hover:text-foreground">Swiper</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="mt-1">
-      <i class="bi bi-folder"></i>
-      <span>ejs</span>
-      /
-      <i class="bi bi-folder"></i>
-      <span>layout</span>
-      /
-      <i class="bi bi-file-earmark"></i>
-      <span>footer.ejs</span>
+
+    <div class="mt-12 border-t border-border pt-6 text-center text-xs text-muted-foreground">
+      &copy; 2024 ManWah Kam. Built with EJS &amp; Tailwind CSS.
     </div>
   </div>
 </footer>

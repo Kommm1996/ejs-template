@@ -1,17 +1,32 @@
 {
   "name": "ejs-template",
-  "version": "1.0.0",
-  "description": "A template for compiling html using ejs",
+  "version": "1.1.0",
+  "description": "A template for compiling HTML using EJS — with Tailwind CSS, GSAP, Swiper, and TypeScript",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "webpack serve --mode=development --devtool=source-map",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "serve": "npx serve dist -l 8080",
+    "test": "node scripts/build-test.js",
+    "lint": "eslint src/js/ --ext .ts",
+    "format": "prettier --write 'src/**/*.{ejs,ts,css}'"
   },
   "keywords": [
-    "ejs"
+    "ejs",
+    "template",
+    "webpack",
+    "tailwindcss",
+    "gsap",
+    "swiper",
+    "html"
   ],
   "author": "ManWah Kam",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",

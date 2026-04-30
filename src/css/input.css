@@ -2,26 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Color System ─── */
 :root {
-  --background: 210 40% 98%;
-  --primary: 199 89% 48%;
-  --primary-text: 0 0% 4%;
-  --border: 0 0% 90%;
+  --background: 220 20% 97%;
+  --foreground: 220 25% 12%;
+  --surface: 0 0% 100%;
+  --primary: 230 70% 50%;
+  --primary-foreground: 0 0% 100%;
+  --muted: 220 15% 92%;
+  --muted-foreground: 220 10% 46%;
+  --accent: 38 92% 50%;
+  --accent-foreground: 220 25% 12%;
+  --border: 220 15% 88%;
+  --ring: 230 70% 50%;
 }
 
 html.dark {
-  --background: 222 47% 11%;
-  --primary: 201 96% 32%;
-  --primary-text: 0 0% 98%;
-  --border: 215 16% 47%;
+  --background: 220 25% 9%;
+  --foreground: 220 15% 92%;
+  --surface: 220 22% 14%;
+  --primary: 230 70% 60%;
+  --primary-foreground: 0 0% 100%;
+  --muted: 220 18% 18%;
+  --muted-foreground: 220 10% 60%;
+  --accent: 38 92% 55%;
+  --accent-foreground: 220 25% 9%;
+  --border: 220 15% 20%;
+  --ring: 230 70% 60%;
 }
 
+/* ─── Base ─── */
 @layer base {
-  body {
-    @apply bg-background text-primary-text transition-colors;
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+
+  /* Bootstrap Icons alignment fix */
   .bi {
     @apply leading-[0];
   }
+}
+
+/* ─── Component Layer ─── */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-all duration-200 hover:brightness-110 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-transparent px-6 py-3 text-sm font-semibold text-foreground transition-all duration-200 hover:bg-muted active:scale-[0.97];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium text-foreground transition-all duration-200 hover:bg-muted active:scale-[0.97];
+  }
+
+  .card {
+    @apply rounded-2xl border border-border bg-surface shadow-card transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply card hover:-translate-y-1 hover:shadow-elevated;
+  }
+
+  .section-title {
+    @apply text-center;
+  }
+
+  .section-title h2 {
+    @apply text-3xl font-bold tracking-tight text-foreground md:text-4xl;
+  }
+
+  .section-title p {
+    @apply mt-4 text-lg text-muted-foreground;
+  }
+
+  .container-page {
+    @apply mx-auto max-w-7xl px-5 md:px-8;
+  }
+}
+
+/* ─── Utility Layer ─── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-grid {
+    background-image: linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
+
+/* ─── GSAP fade-zoom-in animation ─── */
+/* GSAP handles initial state via .from() — no CSS pre-setting needed */
+
+/* ─── Dark mode transition for images ─── */
+img {
+  transition: filter 0.3s ease;
+}
+html.dark img {
+  filter: brightness(0.85) saturate(0.9);
 }

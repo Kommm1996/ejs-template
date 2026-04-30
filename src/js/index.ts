@@ -16,6 +16,7 @@ import "../css/input.css";
 createApp({
   // data
   isDark: false,
+  mobileMenuOpen: false,
   toPosi: Function,
   // methods
   isDarkMode() {
