@@ -13,7 +13,7 @@ export const initGSAP = () => {
         trigger: e,
         start: "top bottom",
         end: "top top",
-        toggleActions: "play none none reset",
+        toggleActions: "play none none none",
       },
       scale: 0.85,
       autoAlpha: 0,
